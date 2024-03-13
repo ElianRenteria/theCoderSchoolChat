@@ -19,10 +19,12 @@ def recieve_message(chat):
 
 def send_message(message, inputbox):
     if message == "quit":
+        recieve_thread.join()
         server.close()
         quit()
-    server.send((username+": " + message).encode())
-    inputbox.delete(0, 'end')
+    else:
+        server.send((username+": " + message).encode())
+        inputbox.delete(0, 'end')
 
 
 
